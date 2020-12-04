@@ -102,21 +102,7 @@ ${license}
        })
    }
 
-// function writeToFile(filename, data) {
-//   fs.writeFile("./demo/" + filename, data, function (err) {
-//     if (err) {
-//       return console.log(err);
-//     }
-//     console.log("YaY" + filename);
-//   });
-// }
 
-// function init() {
-//     inquirer.prompt(questions).then(function(data) {
-//         writeToFile("DemonREADMe.md")
-//     })
-// }
-// init(
 async function init() {
   try {
     const response = await promptUser();
@@ -128,6 +114,3 @@ async function init() {
   }
 }
 
-// inquirer.prompt(questions).then((answers) => {
-//   console.log(JSON.stringify(answers, null, "  "));
-// });
