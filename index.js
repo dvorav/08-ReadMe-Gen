@@ -1,8 +1,12 @@
+
 const fs = require("fs");
 const inquirer = require("inquirer");
 
-inquirer
-  .prompt([
+
+inquirer.prompt([
+    //Questions
+
+    //Title
     {
       type: "input",
       name: "title",
