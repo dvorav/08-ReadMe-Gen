@@ -1,9 +1,8 @@
-
 const fs = require("fs");
 const inquirer = require("inquirer");
 
-
-inquirer.prompt([
+inquirer
+  .prompt([
     //Questions
 
     //Title
@@ -18,7 +17,7 @@ inquirer.prompt([
       name: "description",
       message: "What is the description of the project?",
     },
-    //Input 
+    //Input
     {
       type: "input",
       name: "instruction",
@@ -44,9 +43,13 @@ inquirer.prompt([
     },
     //License
     {
-      type: "input",
+      type: "list",
       name: "license",
       message: "What license was used for the project?",
+      choices: [
+        'MIT',
+        'GPL',
+        'BSD']
     },
     //Username
     {
@@ -73,7 +76,7 @@ inquirer.prompt([
       username,
       email,
     }) => {
-        //Template for ReadMe file
+      //Template for ReadMe file
       const readMeTemplate = `
 ${title}
 
@@ -101,18 +104,17 @@ ${license}
 ## Questions
 * Github: https://github.com/${username}
 * Email: ${email}`;
-     //This function uses FS to create a readme file
-     createNewFile(title,readMeTemplate)
+      //This function uses FS to create a readme file
+      createNewFile(title, readMeTemplate);
     }
   );
-  //Creates ReadMe File, and also names file
-   function createNewFile(fileName, data) {
-       fs.writeFile(`./${fileName}.md`,data,(err) => {
-           if(err) {
-               console.log(err)
-           } else {
-           console.log("Successfully created file!") }
-       })
-   }
-
-
+//Creates ReadMe File, and also names file
+function createNewFile(fileName, data) {
+  fs.writeFile(`./${fileName}.md`, data, (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Successfully created file!");
+    }
+  });
+};
