@@ -120,10 +120,5 @@ async function init() {
   try {
     const response = await promptUser();
     const readMe = generateMarkdown(response);
-    await writeFileaAsync("readme.md", readMe);
-    console.log("Success!");
-  } catch (err) {
-    console.log(error);
-  }
-}
+
 
