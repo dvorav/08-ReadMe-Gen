@@ -12,6 +12,7 @@ inquirer.prompt([
       name: "title",
       message: "What is the name of the project?",
     },
+    //Description
     {
       type: "input",
       name: "description",
