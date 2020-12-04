@@ -1,3 +1,4 @@
+const { error } = require("console");
 const fs = require("fs");
 
 // fs.readFile("data.csv", 'utf8', (error, data) => error ? console.error(error) : console.log(data))
@@ -5,55 +6,110 @@ const fs = require("fs");
 // fs.writeFile('log.txt', process.argv[2], (err) => err ? console.error(err) : console.log('Success!'));
 
 const inquirer = require("inquirer");
+const { async, generate } = require("rxjs");
 
-const questions = [
-  {
-    type: "input",
-    name: "title",
-    message: "What is the name of the project?",
-  },
-  {
-    type: "input",
-    name: "description",
-    message: "What is the description of the project?",
-  },
-  {
-    type: "input",
-    name: "instructions",
-    message: "What are the installation instructions to the project?",
-  },
-  {
-    type: "input",
-    name: "usage",
-    message: "What is the project used for?",
-  },
+inquirer
+  .prompt([
+    {
+      type: "input",
+      name: "title",
+      message: "What is the name of the project?",
+    },
+    {
+      type: "input",
+      name: "description",
+      message: "What is the description of the project?",
+    },
+    {
+      type: "input",
+      name: "instructions",
+      message: "What are the installation instructions to the project?",
+    },
+    {
+      type: "input",
+      name: "usage",
+      message: "What is the project used for?",
+    },
 
-  {
-    type: "input",
-    name: "contributions",
-    message: "Who are the contributors to the project?",
-  },
-  {
-    type: "input",
-    name: "test",
-    message: "What is needed to test the project?",
-  },
-  {
-    type: "input",
-    name: "license",
-    message: "What license was used for the project?",
-  },
-  {
-    type: "input",
-    name: "username",
-    message: "What is your Github username?",
-  },
-  {
-    type: "input",
-    name: "email",
-    message: "What is your email address?",
-  },
-];
+    {
+      type: "input",
+      name: "contributions",
+      message: "Who are the contributors to the project?",
+    },
+    {
+      type: "input",
+      name: "test",
+      message: "What is needed to test the project?",
+    },
+    {
+      type: "input",
+      name: "license",
+      message: "What license was used for the project?",
+    },
+    {
+      type: "input",
+      name: "username",
+      message: "What is your Github username?",
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "What is your email address?",
+    },
+  ])
+  .then(
+    ({
+      title,
+      description,
+      instruction,
+      usage,
+      contribution,
+      test,
+      license,
+      username,
+      email,
+    }) => {
+      const template = `# Table of Contents
+     ${title}
+     1. [Description](#Description)
+     2. [Installation](#Installation)
+     3. [Usage](#Usage)
+     4. [Test](#test)
+     5. [License](#License)
+     6. [Questions](#Questions)
+     
+     
+
+     
+     ## Description
+     ${description}     
+     ## Installation
+     ${instruction}
+     ## Usage
+     ${usage}
+     ## Contributing
+     ${contribution}
+     ## Test
+     ${test}
+     ## License
+     ${license}
+     ## Questions
+     * Github: https://github.com/${username}
+     * Email: ${email}
+     `;
+     //This function uses FS to create a readme file
+     createNewFile(title,template)
+    }
+  );
+   function createNewFile(fileName, data) {
+       fs.writeFile(`./${fileName}.md`,data,(err) => {
+           if(err) {
+               console.log(err)
+           }
+           console.log("Successfully created!")
+       })
+   }
+
 // function writeToFile(filename, data) {
 //   fs.writeFile("./demo/" + filename, data, function (err) {
 //     if (err) {
@@ -69,7 +125,17 @@ const questions = [
 //     })
 // }
 // init()
+async function init() {
+  try {
+    const response = await promptUser();
+    const readMe = generateMarkdown(response);
+    await writeFileaAsync("readme.md", readMe);
+    console.log("Success!");
+  } catch (err) {
+    console.log(error);
+  }
+}
 
-inquirer.prompt(questions).then((answers) => {
-  console.log(JSON.stringify(answers, null, "  "));
-});
+// inquirer.prompt(questions).then((answers) => {
+//   console.log(JSON.stringify(answers, null, "  "));
+// });
