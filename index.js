@@ -116,7 +116,7 @@ ${license}
 //         writeToFile("DemonREADMe.md")
 //     })
 // }
-// init()
+// init(
 async function init() {
   try {
     const response = await promptUser();
