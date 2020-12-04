@@ -1,12 +1,5 @@
-const { error } = require("console");
 const fs = require("fs");
-
-// fs.readFile("data.csv", 'utf8', (error, data) => error ? console.error(error) : console.log(data))
-
-// fs.writeFile('log.txt', process.argv[2], (err) => err ? console.error(err) : console.log('Success!'));
-
 const inquirer = require("inquirer");
-const { async, generate } = require("rxjs");
 
 inquirer
   .prompt([
@@ -22,7 +15,7 @@ inquirer
     },
     {
       type: "input",
-      name: "instructions",
+      name: "instruction",
       message: "What are the installation instructions to the project?",
     },
     {
@@ -33,7 +26,7 @@ inquirer
 
     {
       type: "input",
-      name: "contributions",
+      name: "contribution",
       message: "Who are the contributors to the project?",
     },
     {
@@ -69,34 +62,33 @@ inquirer
       username,
       email,
     }) => {
-      const template = `# Table of Contents
-     ${title}
-     1. [Description](#Description)
-     2. [Installation](#Installation)
-     3. [Usage](#Usage)
-     4. [Test](#test)
-     5. [License](#License)
-     6. [Questions](#Questions)
-     
-     
+      const template = `
+${title}
 
-     
-     ## Description
-     ${description}     
-     ## Installation
-     ${instruction}
-     ## Usage
-     ${usage}
-     ## Contributing
-     ${contribution}
-     ## Test
-     ${test}
-     ## License
-     ${license}
-     ## Questions
-     * Github: https://github.com/${username}
-     * Email: ${email}
-     `;
+# Table of Contents
+
+1. [Description](#Description)
+2. [Installation](#Installation)
+3. [Usage](#Usage)
+4. [Test](#test)
+5. [License](#License)
+6. [Questions](#Questions)
+
+## Description
+${description}     
+## Installation
+${instruction}
+## Usage
+${usage}
+## Contributing
+${contribution}
+## Test
+${test}
+## License
+${license}
+## Questions
+* Github: https://github.com/${username}
+* Email: ${email}`;
      //This function uses FS to create a readme file
      createNewFile(title,template)
     }
@@ -106,7 +98,7 @@ inquirer
            if(err) {
                console.log(err)
            }
-           console.log("Successfully created!")
+           console.log("Successfully created file!")
        })
    }
 
