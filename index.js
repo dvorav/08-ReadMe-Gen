@@ -53,7 +53,6 @@ const questions = [
     name: "email",
     message: "What is your email address?",
   },
-  console.log(questions.title + "Helo thiere!!!!!!")
 ];
 // function writeToFile(filename, data) {
 //   fs.writeFile("./demo/" + filename, data, function (err) {
