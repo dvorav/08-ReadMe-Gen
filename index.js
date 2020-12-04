@@ -116,9 +116,3 @@ ${license}
    }
 
 
-async function init() {
-  try {
-    const response = await promptUser();
-    const readMe = generateMarkdown(response);
-
-
