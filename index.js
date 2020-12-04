@@ -108,7 +108,7 @@ ${license}
       createNewFile(title, readMeTemplate);
     }
   );
-//Creates ReadMe File, and also names file
+//Create ReadMe File, and also names file
 function createNewFile(fileName, data) {
   fs.writeFile(`./${fileName}.md`, data, (err) => {
     if (err) {
