@@ -11,11 +11,12 @@ README-Generator
 6. [Questions](#Questions)
 
 ## Description
-This script will generate readme files for your project.      
+This script will generate readme files for your project. The use for this is to make it more easier and less time consuming when creating a readme file from the ground up. 
+      
 ## Installation
-You would need to have Node.js to run the program. Also the requited npm packages. 
+You would need to have Node.js to run the program. Also the required npm packages of inquirer.
 ## Usage
-The usage for this is to make it more easier and less time consuming when creating a readme file from the ground up. 
+When using this program, have it installed onto your local machine. In the terminal, run "npm i", and also "npm i inquirer". Then once those have been installed successfully, in your terminal, run "node index". This will start the program and you will be prompt questions for your readme.
 ## Contributing
 No contributors
 ## Test
