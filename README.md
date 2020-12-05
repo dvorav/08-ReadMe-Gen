@@ -12,6 +12,11 @@ README-Generator
 
 ## Description
 This script will generate readme files for your project. The use for this is to make it more easier and less time consuming when creating a readme file from the ground up. 
+This is the code that is displayed when the program is initiated 
+![Code](images/ImgOfCode.PNG)
+This is showing a readme.md that is generated.
+![Code](images/ImgOfReadMeExample.PNG)
+
       
 ## Installation
 You would need to have Node.js to run the program. Also the required npm packages of inquirer.
