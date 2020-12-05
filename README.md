@@ -9,6 +9,7 @@ README-Generator
 4. [Test](#test)
 5. [License](#License)
 6. [Questions](#Questions)
+7. [Video Demo](#Video)
 
 ## Description
 This script will generate readme files for your project. The use for this is to make it more easier and less time consuming when creating a readme file from the ground up. 
@@ -32,7 +33,7 @@ MIT
 * Github: https://github.com/dvorav
 * Email: d.vorav612@gmail.com
 
-## Video Demo 
+## Video 
 
 Link: https://dvorav.github.io/08-ReadMe-Gen/ 
 
